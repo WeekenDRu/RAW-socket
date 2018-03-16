@@ -1,0 +1,44 @@
+Frame 1: 45 bytes on wire (360 bits), 45 bytes captured (360 bits) on interface 0
+    Interface id: 0 (lo)
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Mar 12, 2018 16:27:27.477655007 +07
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1520846847.477655007 seconds
+    [Time delta from previous captured frame: 0.000000000 seconds]
+    [Time delta from previous displayed frame: 0.000000000 seconds]
+    [Time since reference or first frame: 0.000000000 seconds]
+    Frame Number: 1
+    Frame Length: 45 bytes (360 bits)
+    Capture Length: 45 bytes (360 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:data]
+Ethernet II, Src: 00:00:00_00:00:00 (00:00:00:00:00:00), Dst: 00:00:00_00:00:00 (00:00:00:00:00:00)
+    Destination: 00:00:00_00:00:00 (00:00:00:00:00:00)
+    Source: 00:00:00_00:00:00 (00:00:00:00:00:00)
+    Type: IPv4 (0x0800)
+Internet Protocol Version 4, Src: 127.0.0.1, Dst: 127.0.0.1
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+        0000 00.. = Differentiated Services Codepoint: Default (0)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 31
+    Identification: 0x001f (31)
+    Flags: 0x00
+        0... .... = Reserved bit: Not set
+        .0.. .... = Don't fragment: Not set
+        ..0. .... = More fragments: Not set
+    Fragment offset: 0
+    Time to live: 255
+    Protocol: Trunk-1 (23)
+    Header checksum: 0xbda6 [validation disabled]
+    [Header checksum status: Unverified]
+    Source: 127.0.0.1
+    Destination: 127.0.0.1
+    [Source GeoIP: Unknown]
+    [Destination GeoIP: Unknown]
+Data (11 bytes)
+    Data: 000000007f000001000000
+    [Length: 11]
+
