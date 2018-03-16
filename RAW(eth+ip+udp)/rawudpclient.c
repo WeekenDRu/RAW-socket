@@ -71,8 +71,8 @@ int main(int argc, char* argv[]){
 	struct ETHRAW header_eth;
 	struct ifreq ifr;
 
-    int sock = 0;
-    int read_bytes=0;
+	int sock = 0;
+	int read_bytes=0;
 	int send_bytes=0;
 	uint8_t mac_dst[6];
 	unsigned int ind_if=0; 
@@ -83,20 +83,20 @@ int main(int argc, char* argv[]){
 	unsigned char buf_send[45];
 	unsigned char buf_recv[60];
 
-    char*    if_name        = 	    	argv[2];
+	char*    if_name        = 	    	argv[2];
 	int      htons_ip_dst   = inet_addr(argv[3]);
 	uint16_t htons_port_dst =      atoi(argv[4]);
 	int 	 htons_ip_src   = inet_addr(argv[5]);
 
-    memset(&buf_send, 0, sizeof(buf_send));
-    memset(&ifr, 0, sizeof(ifr));
+	memset(&buf_send, 0, sizeof(buf_send));
+	memset(&ifr, 0, sizeof(ifr));
 	memset(&header_udp, 0, sizeof(header_udp));
 	memset(&header_ip, 0, sizeof(header_ip));
 	memset(&header_eth, 0, sizeof(header_eth));
 
-    size_t if_name_len=strlen(if_name);
+	size_t if_name_len=strlen(if_name);
 
-    if (if_name_len<sizeof(ifr.ifr_name)) {
+	if (if_name_len<sizeof(ifr.ifr_name)) {
     	memcpy(ifr.ifr_name,if_name,if_name_len);
     	ifr.ifr_name[if_name_len]=0;
 	} else {
@@ -118,12 +118,12 @@ int main(int argc, char* argv[]){
 	}
 
 	if (ifr.ifr_hwaddr.sa_family!=ARPHRD_ETHER) {
-    printf("not an Ethernet interface");
+		printf("not an Ethernet interface");
 	}
 
 	const unsigned char* mac=(unsigned char*)ifr.ifr_hwaddr.sa_data;
 	printf("My MAC: %02X:%02X:%02X:%02X:%02X:%02X\n",
-    mac[0],mac[1],mac[2],mac[3],mac[4],mac[5]);
+		mac[0],mac[1],mac[2],mac[3],mac[4],mac[5]);
 
 	if(6 == sscanf(argv[1], "%02x:%02x:%02x:%02x:%02x:%02x", &mac_dst[0], &mac_dst[1], &mac_dst[2], &mac_dst[3], &mac_dst[4], &mac_dst[5])){
 		printf("Send to MAC: %02x:%02x:%02x:%02x:%02x:%02x\n", mac_dst[0], mac_dst[1], mac_dst[2], mac_dst[3], mac_dst[4], mac_dst[5]);
@@ -176,18 +176,18 @@ int main(int argc, char* argv[]){
 
 	memcpy((void *)buf_send, (void *)&header_eth, sizeof(header_eth));
 	memcpy((void *)(buf_send + sizeof(header_eth)), (void *)&header_ip, sizeof(header_ip));
-    memcpy((void *)(buf_send + sizeof(header_eth) + sizeof(header_ip)), (void *)&header_udp, sizeof(header_udp));
-    memcpy((void *)(buf_send + sizeof(header_eth) + sizeof(header_ip) + sizeof(header_udp)), (void *)buf, sizeof(buf));
+	memcpy((void *)(buf_send + sizeof(header_eth) + sizeof(header_ip)), (void *)&header_udp, sizeof(header_udp));
+	memcpy((void *)(buf_send + sizeof(header_eth) + sizeof(header_ip) + sizeof(header_udp)), (void *)buf, sizeof(buf));
 
-    send_bytes = sendto(sock, buf_send, sizeof(buf_send), 0, (struct sockaddr*)&out_addres, sizeof(out_addres));
+	send_bytes = sendto(sock, buf_send, sizeof(buf_send), 0, (struct sockaddr*)&out_addres, sizeof(out_addres));
 
-    if(send_bytes==-1){
+	if(send_bytes==-1){
 		perror("sendto()");
 		close(sock);
 		exit(1);
 	}
 
-    while(1){
+	while(1){
     	read_bytes = recvfrom(sock, buf_recv, 1024, 0, NULL, NULL);	
 
     	if(read_bytes==-1){
