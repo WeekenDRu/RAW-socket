@@ -83,7 +83,7 @@ int main(int argc, char* argv[]){
 	unsigned char buf_send[45];
 	unsigned char buf_recv[60];
 
-	char*    if_name        = 	    	argv[2];
+	char*    if_name        =			argv[2];
 	int      htons_ip_dst   = inet_addr(argv[3]);
 	uint16_t htons_port_dst =      atoi(argv[4]);
 	int 	 htons_ip_src   = inet_addr(argv[5]);
